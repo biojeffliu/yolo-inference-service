@@ -1,0 +1,20 @@
+name: yolo-service-mps
+channels:
+  - pytorch
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pytorch=2.3.1
+  - torchvision=0.18.1
+  - torchaudio=2.3.1
+  - opencv=4.10.0
+  - ultralytics=8.2.0
+  - pip
+  - pip:
+    - pytest==8.2.2
+    - ruff==0.5.0
+    - black==24.4.2
+    - redis==5.0.7
+    - rq==1.16.2
+    - grpcio==1.64.1
+    - grpcio-tools==1.64.1
