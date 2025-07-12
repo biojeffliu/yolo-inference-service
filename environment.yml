@@ -1,0 +1,23 @@
+name: yolo-service
+channels:
+  - pytorch
+  - conda-forge
+  - nvidia
+dependencies:
+  - python=3.10
+  - pytorch=2.3.1
+  - torchvision=0.18.1
+  - torchaudio=2.3.1
+  - cudatoolkit=12.1  # Swap to cpu if no GPU: remove this and add pytorch::pytorch-cpu
+  - opencv=4.10.0
+  - ultralytics=8.2.0
+  - pip
+  - pip:
+    - pytest==8.2.2
+    - ruff==0.5.0
+    - black==24.4.2
+    - fastapi==0.111.0
+    - uvicorn==0.30.1
+    - redis==5.0.7
+    - rq==1.16.2
+    - pydantic==2.7.4
