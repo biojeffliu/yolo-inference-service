@@ -199,3 +199,12 @@ qtcreator-*
 # Colcon custom files
 COLCON_IGNORE
 AMENT_IGNORE
+
+# Input files
+*.mp4
+
+# Model files
+*.pt
+
+# Outputs
+outputs/
