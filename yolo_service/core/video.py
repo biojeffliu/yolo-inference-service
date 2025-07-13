@@ -29,6 +29,7 @@ def extract_frames(video_path: str, batch_size: int = 32) -> Generator[List[np.n
         if not ret:
             break
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        batch.append(frame)
         if len(batch) == batch_size:
             yield batch
             batch = []
