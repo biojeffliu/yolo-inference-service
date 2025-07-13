@@ -32,7 +32,7 @@ class YOLOModel:
         Returns:
             List[Dict]: List of detections per frame, each with 'detections' key containing dicts (class, confidence, bbox).
         """
-        results = self.model(frames, device=self.device, verbose=False)
+        results = self.model(frames, device=self.device, verbose=True)
         detections = []
         for result in results:
             dets = []
@@ -43,4 +43,5 @@ class YOLOModel:
                     "bbox": box.xyxy.tolist()[0]
                 })
             detections.append({"detections": dets})
+        return detections
             

@@ -11,7 +11,7 @@ def main():
     parser = argparse.ArgumentParser(prog="yolo_service", description="YOLO Video Inference CLI")
     parser.add_argument("video_path", type=str, help="Path to the input video file")
     parser.add_argument("output_json", type=str, help="Path to the output json file for detections")
-    parser.add_argument("--verbose", "-v", type=bool, help="Enables verbosity on output messages")
+    parser.add_argument("--verbose", "-v", action="store_true", help="Enables verbosity on output messages")
     args = parser.parse_args()
 
     if args.verbose:
