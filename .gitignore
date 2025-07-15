@@ -202,10 +202,10 @@ AMENT_IGNORE
 
 # Input files
 *.mp4
-inputs/
+input/
 
 # Model files
 *.pt
 
 # Outputs
-outputs/
+output/

@@ -14,10 +14,12 @@ def main():
     parser.add_argument("--verbose", "-v", action="store_true", help="Enables verbosity on output messages")
     args = parser.parse_args()
 
-    if args.verbose:
+    verbose = args.verbose
+
+    if verbose:
         print(f"Initializing YOLO model...")
     model = YOLOModel()
-    if args.verbose:
+    if verbose:
         print(f"Model successfully loaded onto device: {model.device}")
 
     all_detections = []
@@ -25,14 +27,14 @@ def main():
     total_frames = 0
     for batch in extract_frames(args.video_path):
         batch_size = len(batch)
-        if args.verbose:
+        if verbose:
             print(f"Inferring on batch {batch_count} of size {batch_size}")
             batch_count += 1
             total_frames += batch_size
         detections = model.infer_batch(batch)
         all_detections.extend(detections)
 
-    if args.verbose:
+    if verbose:
         print(f"Dumping detections to {args.output_json}...")
     with open(args.output_json, "w") as f:
         json.dump({"frames": all_detections}, f, indent=4)
