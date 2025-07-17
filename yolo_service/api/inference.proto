@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package inferece;
+
+service InferenceService {
+    rpc InferVideo (InferVideoRequest) returns (JobResponse);
+    rpc GetResult (GetResultRequest) returns (InferenceResult);
+}
+
+message InferVideoRequest {
+    bytes video_data = 1;
+    string filename = 2;
+}
+
+message JobResponse {
+    string job_id = 1;
+}
+
+message GetResultRequest {
+    string job_id = 1;
+}
+
+message Detection {
+    int32 class_id = 1;
+    float confidence = 2;
+    repeated float bbox = 3;
+}
+
+message FrameDetections {
+    repeated Detection detections = 1;
+}
+
+message InferenceResult {
+    repeated FrameDetections frames = 1;
+}
+
+
+
