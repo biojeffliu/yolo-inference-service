@@ -209,3 +209,5 @@ input/
 
 # Outputs
 output/
+
+.DS_Store
