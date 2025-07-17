@@ -69,10 +69,10 @@ def main():
                 if det["confidence"] >= args.min_conf:
                     x1, y1, x2, y2 = map(int, det["bbox"])
                     class_id = det["class"]
-                    label = f"{args.labels_path}_{class_id} {det['confidence']:.2f}"
+                    label = f"{labels[class_id]} {det['confidence']:.2f}"
 
                     cv2.rectangle(frame, (x1, y1), (x2, y2), colors_rgb[class_id % len(colors_rgb)], 2)
-                    cv2.putText(frame, label, (x1, y1 - 10), cv2.FONT_HERSHEY_COMPLEX, 0.5, colors_rgb[class_id % len(colors_rgb)], 2)
+                    cv2.putText(frame, label, (x1, y1 - 10), cv2.FONT_HERSHEY_COMPLEX, 1.0, colors_rgb[class_id % len(colors_rgb)], 2)
         out.write(frame)
         if verbose and frame_idx % 100 == 0:
             print(f"Processed frame {frame_idx}/{total_frames}")
