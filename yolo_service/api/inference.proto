@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package inferece;
+package inference;
 
 service InferenceService {
     rpc InferVideo (InferVideoRequest) returns (JobResponse);
@@ -33,6 +33,3 @@ message FrameDetections {
 message InferenceResult {
     repeated FrameDetections frames = 1;
 }
-
-
-

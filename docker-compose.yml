@@ -1,0 +1,24 @@
+services:
+  api:
+    build: .
+    ports:
+      - "50051:50051"
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  redis:
+    image: redis:7.4-alpine  # Arm64 compatible
+    ports:
+      - "6379:6379"
+
+  worker:
+    build: .
+    command: conda run -n yolo-service rq worker
+    volumes:
+      - .:/app
+    depends_on:
+      - redis

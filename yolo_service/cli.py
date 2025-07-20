@@ -11,6 +11,7 @@ def main():
     parser = argparse.ArgumentParser(prog="yolo_service", description="YOLO Video Inference CLI")
     parser.add_argument("video_path", type=str, help="Path to the input video file")
     parser.add_argument("output_json", type=str, help="Path to the output json file for detections")
+    parser.add_argument("--model_path", type=str, help="Path to YOLO model, default yolov8n.pt")
     parser.add_argument("--verbose", "-v", action="store_true", help="Enables verbosity on output messages")
     args = parser.parse_args()
 
@@ -18,7 +19,10 @@ def main():
 
     if verbose:
         print(f"Initializing YOLO model...")
-    model = YOLOModel()
+    if args.model_path:
+        model = YOLOModel(model_path=args.model_path)
+    else:
+        model = YOLOModel()
     if verbose:
         print(f"Model successfully loaded onto device: {model.device}")
 

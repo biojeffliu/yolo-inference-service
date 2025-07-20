@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-import inference_pb2 as inference__pb2
+from . import inference_pb2 as inference__pb2
 
 GRPC_GENERATED_VERSION = '1.64.1'
 GRPC_VERSION = grpc.__version__
@@ -40,12 +40,12 @@ class InferenceServiceStub(object):
             channel: A grpc.Channel.
         """
         self.InferVideo = channel.unary_unary(
-                '/inferece.InferenceService/InferVideo',
+                '/inference.InferenceService/InferVideo',
                 request_serializer=inference__pb2.InferVideoRequest.SerializeToString,
                 response_deserializer=inference__pb2.JobResponse.FromString,
                 _registered_method=True)
         self.GetResult = channel.unary_unary(
-                '/inferece.InferenceService/GetResult',
+                '/inference.InferenceService/GetResult',
                 request_serializer=inference__pb2.GetResultRequest.SerializeToString,
                 response_deserializer=inference__pb2.InferenceResult.FromString,
                 _registered_method=True)
@@ -81,9 +81,9 @@ def add_InferenceServiceServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'inferece.InferenceService', rpc_method_handlers)
+            'inference.InferenceService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('inferece.InferenceService', rpc_method_handlers)
+    server.add_registered_method_handlers('inference.InferenceService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -104,7 +104,7 @@ class InferenceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/inferece.InferenceService/InferVideo',
+            '/inference.InferenceService/InferVideo',
             inference__pb2.InferVideoRequest.SerializeToString,
             inference__pb2.JobResponse.FromString,
             options,
@@ -131,7 +131,7 @@ class InferenceService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/inferece.InferenceService/GetResult',
+            '/inference.InferenceService/GetResult',
             inference__pb2.GetResultRequest.SerializeToString,
             inference__pb2.InferenceResult.FromString,
             options,
