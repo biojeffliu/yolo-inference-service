@@ -203,6 +203,7 @@ AMENT_IGNORE
 # Input files
 *.mp4
 input/
+rosbags/
 
 # Model files
 *.pt
@@ -214,3 +215,5 @@ output/
 ._.DS_Store
 **/.DS_Store
 **/._.DS_Store
+
+.vscode/

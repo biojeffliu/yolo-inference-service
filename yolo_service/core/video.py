@@ -5,7 +5,7 @@ import cv2
 import numpy as np
 from typing import List, Generator
 
-def extract_frames(video_path: str, batch_size: int = 32) -> Generator[List[np.ndarray], None, None]:
+def extract_frames(video_path: str, batch_size: int = 1) -> Generator[List[np.ndarray], None, None]:
     """Extracts frames from a video file in batches.
 
     Args:
