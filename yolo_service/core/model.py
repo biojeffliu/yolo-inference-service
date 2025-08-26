@@ -18,7 +18,8 @@ class YOLOModel:
         Raises:
             ValueError: If selected device is not available.
         """
-        self.device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
+        # self.device = "cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu"
+        self.device = "cpu" # warning: segmentation models on MPS seems to have issues. 
         self.model = YOLO(model_path)
         if self.device == "cuda" and not torch.cuda.is_available():
             raise ValueError(f"CUDA selected but not available.")
